@@ -24,6 +24,7 @@ class CategoriesRequest extends FormRequest
         // Common rules for both store and update
         $rules = [
             'name' => 'sometimes|string|max:255',  // Optional for update
+            'name' =>  'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'description' => 'nullable|string',
         ];
 

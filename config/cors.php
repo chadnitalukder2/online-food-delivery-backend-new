@@ -15,10 +15,10 @@ return [
     |
     */
 
-    'paths' => ['*'],
-
+    //'paths' => ['*','sanctum/csrf-cookie'],
+    'paths' => ['*', 'sanctum/csrf-cookie'],
     'allowed_methods' => ['*'],
-
+    //'allowed_origins' => ['http://localhost:5173', 'http://online-food-delivery-frontend.test'],
    // 'allowed_origins' => [env('FRONTEND_URL', ' http://127.0.0.1:5173/')],
    
     'allowed_origins_patterns' => [],

@@ -18,6 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
+            'image' => $this->faker->imageUrl(640, 480, 'food'), 
             'description' => $this->faker->sentence(10),
             'created_at' => now(), 
             'updated_at' => now(),
