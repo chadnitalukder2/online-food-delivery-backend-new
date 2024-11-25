@@ -22,6 +22,7 @@ class CategoryController extends Controller
         $categories = $this->CategoriesService->getCategories();
         return new CategoriesCollection($categories);
     }
+    
     public function show($id){
         $categories = $this->CategoriesService->getCategoryById($id);
         return new CategoriesResource($categories);
