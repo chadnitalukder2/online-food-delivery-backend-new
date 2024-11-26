@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthLoginRequest;
 use App\Http\Resources\AuthLoginResource;
-use App\Services\AuthService;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,4 +28,12 @@ class AuthLoginController extends Controller
             'token_type' => 'Bearer',
         ], 200);
     }
+
+    public function logout(Request $request)
+    {
+    
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Logged out successfully'], 200);
+    }
+
 }
