@@ -21,10 +21,11 @@ class AuthRegisterController extends Controller
 
     public function register(AuthRegisterRequest $request)
     {
-       
+    
         $user = $this->AuthService->createUser($request->validated());
+     
         $token = $user->createToken('auth_token')->plainTextToken;
-        // Auth::login($user);
+        Auth::login($user);
         return response()->json([
             'user' => new AuthRegisterResource($user),
             'token' => $token,

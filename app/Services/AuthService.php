@@ -12,20 +12,10 @@ class AuthService
 
     public function createUser(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return User::create($data);
     }
 
-    public function loginUser(array $data){
-        $user = User::where('email', $data['email'])->first();
-    
-        if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-    }
+  
 
    
 
