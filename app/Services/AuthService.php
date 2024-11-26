@@ -19,6 +19,14 @@ class AuthService
         ]);
     }
 
+    public function loginUser(array $data){
+        $user = User::where('email', $data['email'])->first();
+    
+        if (!$user || !Hash::check($data['password'], $user->password)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+    }
+
    
 
 }

@@ -37,10 +37,7 @@ class DatabaseSeeder extends Seeder
         Wishlist::factory(10)->create();
         OrderTracking::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+      
 
         
         

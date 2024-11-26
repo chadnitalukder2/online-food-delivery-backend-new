@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\AuthRegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DeliveryPersonnelController;
@@ -32,7 +34,11 @@ Route::apiResource('wishlists', WishlistController::class);
 Route::apiResource('orderTrackings', OrderTrackingController::class);
 
 //================================================================
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthRegisterController::class, 'register']);
+Route::post('/login', [AuthLoginController::class, 'login']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::get('/hello' , function(){
     return 'hello';
