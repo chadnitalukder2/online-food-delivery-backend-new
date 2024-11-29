@@ -20,7 +20,7 @@ class DeliveryService
             $query->where('status', $filters['status']);
         }
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getDeliveryById($id)

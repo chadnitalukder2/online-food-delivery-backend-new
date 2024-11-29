@@ -12,17 +12,17 @@ class MenusCollection extends Collection
      */
     public function toArray(): array
     {
-       
         return [
             'MENUS' => $this->collection,
             'menu_meta' => [
-                // 'total' => $this->total(),
+                'total' => $this->total(),
                 'count' => $this->count(),
-                // 'current_page' => $this->currentPage(),
-                // 'last_page' => $this->lastPage(),
+                'current_page' => $this->currentPage(),
+                'last_page' => $this->lastPage(),
             ]
+          
         ];
-
+    
     }
 
 

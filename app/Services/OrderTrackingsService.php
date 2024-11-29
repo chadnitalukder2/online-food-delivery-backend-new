@@ -21,7 +21,7 @@ class OrderTrackingsService
         }
        
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getOrderTrackingById($id)

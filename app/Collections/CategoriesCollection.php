@@ -14,7 +14,7 @@ class CategoriesCollection extends Collection
     {
        
         return [
-            'Categories' => $this->collection,
+            'Categories' => $this->collection->desc,
         ];
     }
 

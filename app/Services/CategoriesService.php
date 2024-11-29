@@ -10,8 +10,8 @@ class CategoriesService
     public function getCategories()
     {
         $query = Category::query();
-        return $query->get();
-
+        return $query->orderBy('id', 'desc')->get();
+       
     }
     public function getCategoryById($id){
         return Category::findOrFail($id);

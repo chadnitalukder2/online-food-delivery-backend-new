@@ -18,7 +18,7 @@ class DeliveryPersonnelService
             $query->where('availability', $filters['availability']);
         }
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getPersonById($id)

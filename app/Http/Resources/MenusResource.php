@@ -17,11 +17,12 @@ class MenusResource extends JsonResource
         return [
             'id' => $this->id,
             'restaurant_id' => $this->restaurant_id,
+            'category_id' => $this->category_id,
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
             'image' => $this->image,
-            'availability_of_menu' => $this->availability,
+            'availability' => $this->availability,
             'restaurant_name' => $this->restaurant->name,
             'category_name' => $this->category->name,
             'created_at' => $this->created_at->toDateTimeString(),

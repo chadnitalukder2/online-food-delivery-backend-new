@@ -35,8 +35,6 @@ class RestaurantController extends Controller
     //store
     public function store(RestaurantRequest $request)
     {
-   
-
         $restaurant = $this->restaurantService->createRestaurant($request->validated());
 
         if ($request->hasFile('image')) {
@@ -49,7 +47,6 @@ class RestaurantController extends Controller
     // Update an existing
     public function update(RestaurantRequest $request, $id)
     {
-        dd('hello',  $request);
         $restaurant = $this->restaurantService->getRestaurantById($id);
         $updatedRestaurant = $this->restaurantService->updatedRestaurant($restaurant, $request->validated());
         return new RestaurantResource($updatedRestaurant);

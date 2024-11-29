@@ -28,7 +28,7 @@ class OrderService
 
        
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getOrderById($id)

@@ -16,7 +16,7 @@ class ReviewService
             $query->where('rating', $filters['rating']);
         }
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getReviewById($id)

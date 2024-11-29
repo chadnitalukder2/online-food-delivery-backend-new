@@ -17,7 +17,7 @@ class restaurantService
             $query->where('address', $filters['address']);
         }
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
 
     }
 

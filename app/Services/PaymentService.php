@@ -24,7 +24,7 @@ class PaymentService
         }
        
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getPaymentById($id)

@@ -25,7 +25,7 @@ class MenusService
             $query->whereBetween('price', [$filters['price_min'], $filters['price_max']]);
         }
 
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getMenuById($id)
@@ -36,6 +36,7 @@ class MenusService
     public function createMenu(array $data)
     {
         return Menu::create($data);
+       
     }
 
     public function updateMenu(Menu $menu, array $data)

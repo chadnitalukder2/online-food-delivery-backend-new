@@ -29,8 +29,8 @@ class MenusRequest extends FormRequest
             'name' => 'sometimes|string|max:255',  // Optional for update
             'description' => 'nullable|string',
             'price' => 'sometimes|numeric|min:0',
-            'image' => 'nullable|string',
-            'availability' => 'sometimes|string|in:available,unavailable',
+            'image' =>'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'availability' => 'sometimes|string',
         ];
    
         // Adjust required rules for POST (store operation)
@@ -39,7 +39,7 @@ class MenusRequest extends FormRequest
             $rules['category_id'] = 'required|exists:categories,id';
             $rules['name'] = 'required|string|max:255';
             $rules['price'] = 'required|numeric|min:0';
-            $rules['availability'] = 'required|string|in:available,unavailable';
+            $rules['availability'] = 'required|string';
         }
      
         return $rules;

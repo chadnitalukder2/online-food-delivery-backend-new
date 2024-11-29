@@ -11,7 +11,7 @@ class DiscountService
     public function getDiscount()
     {
         $query = Discount::query();
-        return $query->get();
+        return $query->orderBy('id', 'desc')->get();
     }
 
     public function getDiscountById($id)

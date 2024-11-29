@@ -22,6 +22,7 @@ class MenuController extends Controller
     {
         $filters = $request->only(['availability', 'restaurant_id', 'price_min', 'price_max']);
         $menus = $this->menuService->getFilteredMenus($filters);
+       
         return new MenusCollection($menus);
     }
 
@@ -34,6 +35,10 @@ class MenuController extends Controller
     public function store(MenusRequest $request)
     {
         $menu = $this->menuService->createMenu($request->validated());
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('menus_img', 'public');
+            $imagePath = asset('storage/'.$imagePath);
+        }
         return new MenusResource($menu);
     }
 
@@ -42,6 +47,10 @@ class MenuController extends Controller
     {
         $menu = $this->menuService->getMenuById($id);
         $updatedMenu = $this->menuService->updateMenu($menu, $request->validated());
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('menus_img', 'public');
+            $imagePath = asset('storage/'.$imagePath);
+        }
         return new MenusResource($updatedMenu);
     }
 
