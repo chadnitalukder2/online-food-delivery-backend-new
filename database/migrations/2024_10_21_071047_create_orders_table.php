@@ -21,16 +21,18 @@ return new class extends Migration
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->integer('total_amount');
             $table->string('status');
-            $table->string('payment_method');
-            $table->string('order_date');
+            $table->string('payment_status');
+            $table->integer('quantity');
             $table->string('delivery_address');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
             $table->timestamps();
 
             //Indexes
             $table->index(['restaurant_id','user_id', 'total_amount']);
             $table->index(['restaurant_id','user_id', 'status']);
-            $table->index(['restaurant_id','user_id', 'payment_method']);
-            $table->index(['restaurant_id','user_id', 'order_date']);
+            $table->index(['restaurant_id','user_id', 'payment_status']);
             $table->index(['restaurant_id','user_id', 'delivery_address']);
         });
     }

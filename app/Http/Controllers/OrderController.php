@@ -20,7 +20,7 @@ class OrderController extends Controller
     // Get all menus with optional filtering and pagination
     public function index(Request $request)
     {
-        $filters = $request->only(['total_amount', 'status', 'payment_method', 'order_date', 'delivery_address']);
+        $filters = $request->only(['total_amount', 'status', 'payment_status', 'delivery_address']);
         $menus = $this->OrderService->getFilteredOrder($filters);
         return new OrderCollection($menus);
     }

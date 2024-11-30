@@ -28,8 +28,11 @@ class OrdersRequest extends FormRequest
             'menu_id' => 'sometimes|exists:menus,id',
             'total_amount' => 'sometimes|numeric|min:0',
             'status' => 'sometimes|string|in:pending,completed,canceled',
-            'payment_method' => 'sometimes|in:cash,card,paypal',
-            'order_date' => 'sometimes|date',
+            'payment_status' => 'sometimes|string|in:pending,paid,failed',
+            'quantity' => 'sometimes|integer|min:1', 
+            'name' => 'sometimes|string|max:255',
+            'email' => 'sometimes|email|max:255',
+            'phone' => 'sometimes|string|max:20',
             'delivery_address' => 'sometimes|string|max:255',
         ];
 
@@ -39,9 +42,10 @@ class OrdersRequest extends FormRequest
             $rules['menu_id'] = 'required|exists:menus,id';
             $rules['total_amount'] = 'required|numeric|min:0';
             $rules['status'] = 'required|string|in:pending,completed,canceled';
-            $rules['payment_method'] = 'required|in:cash,card,paypal';
-            $rules['order_date'] = 'required|date';
             $rules['delivery_address'] = 'required|string|max:255';
+            $rules['name'] = 'required|string|max:255';
+             $rules['email'] = 'required|email|max:255';
+             $rules['phone'] = 'required|string|max:20';
         }
 
         return $rules;
