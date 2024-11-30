@@ -33,7 +33,7 @@ class RestaurantRequest extends FormRequest
             'delivery_fee' => 'sometimes|numeric|min:0',
             'delivery_time' => 'sometimes|integer|min:1',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
-
+            'bg_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
 
         // Adjust required rules for POST (store operation)

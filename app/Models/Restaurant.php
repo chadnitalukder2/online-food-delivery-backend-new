@@ -10,4 +10,6 @@ class Restaurant extends Model
     /** @use HasFactory<\Database\Factories\RestaurantFactory> */
     use HasFactory;
     protected $guarded = [];
+
+    
 }

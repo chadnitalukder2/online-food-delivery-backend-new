@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\AuthRegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\DeliveryPersonnelController;
@@ -32,7 +33,7 @@ Route::apiResource('reviews', ReviewController::class);
 Route::apiResource('discounts', DiscountController::class);
 Route::apiResource('wishlists', WishlistController::class);
 Route::apiResource('orderTrackings', OrderTrackingController::class);
-
+Route::apiResource('carts', CartController::class);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);

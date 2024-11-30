@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartRequest extends FormRequest
+class CategoriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,15 @@ class CartRequest extends FormRequest
     {
         // Common rules for both store and update
         $rules = [
-            'name' => 'sometimes|string|max:255',  // Optional for update
-            'image' =>  'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'description' => 'nullable|string',
+            'user_id' => 'sometimes|integer|exists:users,id',
+            'restaurant_id' => 'sometimes|integer|exists:restaurants,id',
+            'menu_id' => 'sometimes|integer|exists:menus,id',
+            'quantity' => 'sometimes|integer|min:1',
+            'line_total' => 'sometimes|numeric|min:0',
+            'status' => 'nullable|string',
         ];
 
-        // Adjust required rules for POST (store operation)
-        if ($this->isMethod('POST')) {
-            $rules['name'] = 'required|string|max:255';
-        }
-        
+      
         return $rules;
     }
 }

@@ -26,6 +26,7 @@ class RestaurantFactory extends Factory
             'delivery_fee' => $this->faker->numberBetween(10, 100),
             'delivery_time' => $this->faker->numberBetween(10, 60) . ' minutes', 
             'image' => $this->faker->imageUrl(640, 480, 'logo'), 
+            'bg_image' => $this->faker->imageUrl(640, 480, 'food'), 
             'created_at' => now(), 
             'updated_at' => now(),
         ];

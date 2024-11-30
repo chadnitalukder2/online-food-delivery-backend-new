@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('delivery_time');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('bg_image')->nullable();
             $table->timestamps();
 
             //Indexes
