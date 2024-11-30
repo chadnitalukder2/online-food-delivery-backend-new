@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\DeliveryPersonnel;
 use App\Models\Order;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +21,7 @@ class DeliveryFactory extends Factory
     {
         return [
             'order_id' => Order::factory(),
+            'restaurant_id' => Restaurant::factory(),
             'delivery_personnel_id' => DeliveryPersonnel::factory(), 
             'estimated_time' => $this->faker->time('H:i'),
             'status' => $this->faker->randomElement(['pending', 'on the way', 'delivered', 'failed']),

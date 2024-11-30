@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class OrderTrackingFactory extends Factory
     {
         return [
             'order_id' => Order::factory(),
+            'restaurant_id' => Restaurant::factory(),
             'current_status' => $this->faker->randomElement(['pending', 'processing', 'shipped', 'delivered', 'cancelled']),
             'status_update_time' => $this->faker->dateTimeBetween('-2 days', 'now')->format('Y-m-d H:i:s'),
             'estimated_delivery_time' => $this->faker->dateTimeBetween('now', '+3 hours')->format('Y-m-d H:i:s'),

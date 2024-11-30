@@ -23,10 +23,10 @@ class DeliveryPersonnelRequest extends FormRequest
     {
         $rules = [
             'name' => 'sometimes|string|max:255', 
-            'email' => 'sometimes|email|unique',
+            'email' => 'sometimes|email',
             'phone' => 'nullable|numeric',
             'vehicle_type' => 'sometimes|string',
-            'availability' => 'sometimes|in:available, unavailable',
+            'availability' => 'sometimes',
 
         ];
 
@@ -34,9 +34,9 @@ class DeliveryPersonnelRequest extends FormRequest
         if ($this->isMethod('POST')) {
             $rules['name'] = 'required|string|max:255';
             $rules['phone'] = 'required|numeric';
-            $rules['email'] =  'required|email|unique';
+            $rules['email'] =  'required|email';
             $rules['vehicle_type'] = 'required|string';
-            $rules['availability'] = 'required|in:available, unavailable';
+            $rules['availability'] = 'required';
         }
         
         return $rules;

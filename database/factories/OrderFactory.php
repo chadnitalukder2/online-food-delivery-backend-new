@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Menu;
 use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,6 +22,7 @@ class OrderFactory extends Factory
         return [
             'user_id' => User::factory(),            
             'restaurant_id' => Restaurant::factory(),
+            'menu_id' => Menu::factory(),
             'total_amount' => $this->faker->numberBetween(100, 5000),
             'status' => $this->faker->randomElement(['pending', 'completed', 'canceled']),
             'payment_method' => $this->faker->randomElement(['credit card', 'cash', 'paypal']),

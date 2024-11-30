@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class PaymentFactory extends Factory
     {
         return [
             'order_id' => Order::factory(),  
+            'restaurant_id' => Restaurant::factory(),
             'amount' => $this->faker->numberBetween(100, 10000), 
             'payment_method' => $this->faker->randomElement(['credit card', 'cash', 'paypal', 'bank transfer']), 
             'status' => $this->faker->randomElement(['pending', 'completed', 'failed']),

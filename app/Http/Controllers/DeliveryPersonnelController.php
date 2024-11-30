@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Collections\DeliveryPersonnelCollection;
 use App\Http\Requests\DeliveryPersonnelRequest;
-use App\Http\Requests\DeliveryPersonnelsRequest;
 use App\Http\Resources\DeliveryPersonnelResource;
 use App\Services\DeliveryPersonnelService;
 use Illuminate\Http\Request;

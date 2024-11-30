@@ -11,22 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->integer('amount');
-            $table->string('payment_method');
-            $table->string('status');
+            $table->unsignedBigInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->integer('quantity');
+            $table->integer('line_total');
+            $table->string('status')->default('cart');
             $table->timestamps();
-
-             //Indexes
-             $table->index(['order_id', 'amount']);
-             $table->index(['order_id', 'payment_method']);
-             $table->index(['order_id', 'status']);
-
         });
     }
 
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('carts');
     }
 };
