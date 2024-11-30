@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('address');
+            $table->string('status');
+            $table->string('delivery_fee');
+            $table->string('delivery_time');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();

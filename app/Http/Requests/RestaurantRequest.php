@@ -21,7 +21,7 @@ class RestaurantRequest extends FormRequest
      */
     public function rules()
     {
-      
+
         // Common rules for both store and update
         $rules = [
             'name' => 'sometimes|string|max:255',  // Optional for update
@@ -29,6 +29,9 @@ class RestaurantRequest extends FormRequest
             'email' => 'sometimes|email|unique:restaurants,email',
             'phone' => 'nullable|numeric',
             'address' => 'sometimes|string',
+            'status' => 'sometimes|string',
+            'delivery_fee' => 'sometimes|numeric|min:0',
+            'delivery_time' => 'sometimes|integer|min:1',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
 
         ];
@@ -40,9 +43,8 @@ class RestaurantRequest extends FormRequest
             $rules['email'] =  'required|email|unique:restaurants,email';
             $rules['address'] = 'required|string';
         }
-       
-     
+
+
         return $rules;
     }
-
 }
