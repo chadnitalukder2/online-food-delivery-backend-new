@@ -23,6 +23,7 @@ class CartRequest extends FormRequest
     {
         // Common rules for both store and update
         $rules = [
+            'restaurant_id' => 'sometimes|exists:restaurants,id',
             'name' => 'sometimes|string|max:255',  // Optional for update
             'image' =>  'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'description' => 'nullable|string',
@@ -31,6 +32,7 @@ class CartRequest extends FormRequest
         // Adjust required rules for POST (store operation)
         if ($this->isMethod('POST')) {
             $rules['name'] = 'required|string|max:255';
+            $rules['restaurant_id'] = 'required|exists:restaurants,id';
         }
         
         return $rules;

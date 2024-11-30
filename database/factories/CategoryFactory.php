@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
+            'restaurant_id' => Restaurant::factory(),
             'image' => $this->faker->imageUrl(640, 480, 'food'), 
             'description' => $this->faker->sentence(10),
             'created_at' => now(), 
