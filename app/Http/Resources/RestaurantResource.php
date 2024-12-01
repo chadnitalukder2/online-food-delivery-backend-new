@@ -27,6 +27,8 @@ class RestaurantResource extends JsonResource
             'delivery_fee' => $this->delivery_fee,
             'delivery_time' => $this->delivery_time,
             'description' => $this->description,
+            'menus' => $this->menu,
+            'category' => $this->category,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
         ];

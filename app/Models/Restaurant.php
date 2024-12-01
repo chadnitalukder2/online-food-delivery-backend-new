@@ -11,5 +11,12 @@ class Restaurant extends Model
     use HasFactory;
     protected $guarded = [];
 
-    
+    public function menu()
+    {
+        return $this->hasMany(Menu::class);
+    }
+    public function category()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
