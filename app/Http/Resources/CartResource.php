@@ -22,6 +22,7 @@ class CartResource extends JsonResource
             'quantity' => $this->quantity,
             'line_total' => $this->line_total,
             'status' => $this->status,
+            'menu' => $this->menu,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
         ];

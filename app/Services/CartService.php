@@ -7,10 +7,9 @@ use GuzzleHttp\Psr7\Request;
 
 class CartService
 {
-    public function getCarts()
+   public function getCarts()
     {
-        $query = Cart::query();
-        return $query->orderBy('id', 'desc')->get();
+       return Cart::with('menu')->orderBy('id', 'desc')->get();
        
     }
     public function getCartById($id){
