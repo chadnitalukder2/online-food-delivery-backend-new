@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartRequest extends FormRequest
+class CategoriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
