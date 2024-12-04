@@ -39,13 +39,8 @@ class CategoryController extends Controller
 
     public function update(CategoriesRequest $request, $id)
     {
-      
         $categories = $this->CategoriesService->getCategoryById($id);
         $updatedCategories = $this->CategoriesService->updatedCategories($categories, $request->validated());
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('category_img', 'public');
-            $imagePath = asset('storage/'.$imagePath);
-        }
         return new CategoriesResource($updatedCategories);
     }
 
