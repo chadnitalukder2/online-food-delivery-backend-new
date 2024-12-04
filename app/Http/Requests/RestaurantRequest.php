@@ -24,20 +24,22 @@ class RestaurantRequest extends FormRequest
 
         // Common rules for both store and update
         $rules = [
+            'owner_id' => 'sometimes|exists:users,id',
             'name' => 'sometimes|string|max:255',  // Optional for update
             'description' => 'nullable|string',
             'email' => 'sometimes|email|unique:restaurants,email',
             'phone' => 'nullable|numeric',
             'address' => 'sometimes|string',
-            'status' => 'sometimes|string',
-            'delivery_fee' => 'sometimes|numeric|min:0',
-            'delivery_time' => 'sometimes|integer|min:1',
+            'status' => 'nullable|string',
+            'delivery_fee' => 'nullable|numeric|min:0',
+            'delivery_time' => 'nullable|integer|min:1',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'bg_image' => 'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
 
         // Adjust required rules for POST (store operation)
         if ($this->isMethod('POST')) {
+            $rules['owner_id'] = 'required|exists:users,id';
             $rules['name'] = 'required|string|max:255';
             $rules['phone'] = 'required|numeric';
             $rules['email'] =  'required|email|unique:restaurants,email';

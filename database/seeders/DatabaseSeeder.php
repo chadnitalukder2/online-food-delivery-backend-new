@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         Menu::factory(50)->create();
         Category::factory(10)->create();
 
+        
       
 
         

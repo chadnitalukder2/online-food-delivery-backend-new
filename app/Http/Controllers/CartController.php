@@ -29,7 +29,9 @@ class CartController extends Controller
     }
 
     public function store(CartRequest $request){
+  
         $cart = $this->CartService->createCart($request->validated());
+      
         return new CartResource($cart);
     }
 

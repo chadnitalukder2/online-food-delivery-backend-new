@@ -14,6 +14,7 @@ use App\Http\Controllers\OrderTrackingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,10 +35,12 @@ Route::apiResource('discounts', DiscountController::class);
 Route::apiResource('wishlists', WishlistController::class);
 Route::apiResource('orderTrackings', OrderTrackingController::class);
 Route::apiResource('carts', CartController::class);
+
+Route::apiResource('users', UserController::class);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);
 
 
-Route::middleware('auth:sanctum')->post('/logout', [AuthLoginController::class, 'logout']);
+Route::post('/logout', [AuthLoginController::class, 'logout']);
 

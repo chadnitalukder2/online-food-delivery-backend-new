@@ -19,7 +19,6 @@ class CartService
 
     public function createCart(array $data){
         return Cart::create($data);
-
     }
 
     public function updatedCart(Cart $cart, array $data)
