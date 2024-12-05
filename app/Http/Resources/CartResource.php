@@ -12,7 +12,7 @@ class CartResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray(Request $request)
     {
         return [
             'id' => $this->id,
@@ -23,6 +23,7 @@ class CartResource extends JsonResource
             'line_total' => $this->line_total,
             'status' => $this->status,
             'menu' => $this->menu,
+            'restaurant' => $this->restaurant,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
         ];

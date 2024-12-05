@@ -7,17 +7,21 @@ use GuzzleHttp\Psr7\Request;
 
 class CartService
 {
-   public function getCarts()
+    public function getCartsByUserId($id)
     {
-       return Cart::with('menu')->orderBy('id', 'desc')->get();
-       
+        return Cart::where('user_id', $id)->with('menu', 'restaurant')->where('status', 'cart')->get();
     }
-    public function getCartById($id){
+    public function getCarts()
+    {
+        return Cart::with('menu')->orderBy('id', 'desc')->get();
+    }
+    public function getCartById($id)
+    {
         return Cart::findOrFail($id);
-
     }
 
-    public function createCart(array $data){
+    public function createCart(array $data)
+    {
         return Cart::create($data);
     }
 
@@ -32,6 +36,4 @@ class CartService
     {
         $cart->delete();
     }
-
-
 }

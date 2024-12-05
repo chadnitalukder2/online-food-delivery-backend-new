@@ -17,6 +17,14 @@ class CategoryController extends Controller
         $this->CategoriesService = new CategoriesService();
     }
 
+    public function getCategoryByOwner($id) {
+        if (!is_numeric($id)) {
+            return response()->json(['message' => 'Invalid user ID'], 400);
+        }
+        $categories = $this->CategoriesService ->geCategoryByOwner($id);
+        return $categories;
+    }
+
     public function index(Request $request)
     {
         $categories = $this->CategoriesService->getCategories();

@@ -23,29 +23,23 @@ class OrdersRequest extends FormRequest
     {
  
         $rules = [
-            'user_id' => 'sometimes|exists:users,id', 
-            'restaurant_id' => 'sometimes|exists:restaurants,id',
-            'menu_id' => 'sometimes|exists:menus,id',
+            'user_id' => 'sometimes|exists:users,id',
             'total_amount' => 'sometimes|numeric|min:0',
             'status' => 'sometimes|string|in:pending,completed,canceled',
             'payment_status' => 'sometimes|string|in:pending,paid,failed',
-            'quantity' => 'sometimes|integer|min:1', 
             'name' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|max:255',
-            'phone' => 'sometimes|string|max:20',
+            'phone' => 'sometimes|integer',
             'delivery_address' => 'sometimes|string|max:255',
         ];
 
         if ($this->isMethod('POST')) {
             $rules['user_id'] = 'required|exists:users,id';
-            $rules['restaurant_id'] = 'required|exists:restaurants,id';
-            $rules['menu_id'] = 'required|exists:menus,id';
             $rules['total_amount'] = 'required|numeric|min:0';
-            $rules['status'] = 'required|string|in:pending,completed,canceled';
             $rules['delivery_address'] = 'required|string|max:255';
             $rules['name'] = 'required|string|max:255';
              $rules['email'] = 'required|email|max:255';
-             $rules['phone'] = 'required|string|max:20';
+             $rules['phone'] = 'required|integer';
         }
 
         return $rules;

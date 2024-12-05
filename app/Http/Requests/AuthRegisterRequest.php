@@ -23,12 +23,17 @@ class AuthRegisterRequest extends FormRequest
     {
         // Common rules for both store and update
         $rules = [
-            'name' => 'required|string|max:255',
-            'role' => 'required|string',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'name' => 'sometimes|string|max:255',
+            'role' => 'sometimes|string',
+            'email' => 'sometimes|string|email',
+            'password' => 'sometimes|string|min:8|confirmed',
         ];
-      
+        if ($this->isMethod('POST')) {
+            $rules['name'] = 'required|string|max:255';
+            $rules['role'] = 'required|string';
+            $rules['email'] = 'required|string|email|max:255|unique:users';
+            $rules['password'] = 'required|string|min:8|confirmed';
+        }
       
         return $rules;
     }

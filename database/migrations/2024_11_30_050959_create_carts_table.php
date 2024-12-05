@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
             $table->unsignedBigInteger('menu_id');
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->integer('order_id')->nullable();
             $table->integer('quantity');
             $table->integer('line_total');
             $table->string('status')->default('cart');

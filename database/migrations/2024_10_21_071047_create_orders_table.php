@@ -15,14 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
-            $table->unsignedBigInteger('menu_id');
-            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->integer('total_amount');
-            $table->string('status');
-            $table->string('payment_status');
-            $table->integer('quantity');
+            $table->string('status')->default('padding');
+            $table->string('payment_status')->default('unpaid');
             $table->string('delivery_address');
             $table->string('name');
             $table->string('email');
@@ -30,10 +25,10 @@ return new class extends Migration
             $table->timestamps();
 
             //Indexes
-            $table->index(['restaurant_id','user_id', 'total_amount']);
-            $table->index(['restaurant_id','user_id', 'status']);
-            $table->index(['restaurant_id','user_id', 'payment_status']);
-            $table->index(['restaurant_id','user_id', 'delivery_address']);
+            $table->index(['user_id', 'total_amount']);
+            $table->index(['user_id', 'status']);
+            $table->index(['user_id', 'payment_status']);
+            $table->index(['user_id', 'delivery_address']);
         });
     }
 

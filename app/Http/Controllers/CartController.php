@@ -17,6 +17,15 @@ class CartController extends Controller
         $this->CartService = new CartService();
     }
 
+    public function getCarts($id){
+        if (!is_numeric($id)) {
+            return response()->json(['message' => 'Invalid user ID'], 400);
+        }
+      
+        $cart = $this->CartService->getCartsByUserId($id);
+        return $cart;
+    }
+
     public function index(Request $request)
     {
         $cart = $this->CartService->getCarts();

@@ -24,6 +24,7 @@ class CartRequest extends FormRequest
         // Common rules for both store and update
         $rules = [
             'user_id' => 'sometimes|exists:users,id',
+            'order_id' => 'nullable',
             'restaurant_id' => 'sometimes|integer|exists:restaurants,id',
             'menu_id' => 'sometimes|integer|exists:menus,id',
             'quantity' => 'sometimes|integer|min:1',

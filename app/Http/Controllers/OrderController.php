@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Collections\OrderCollection;
 use App\Http\Requests\OrdersRequest;
 use App\Http\Resources\OrdersResource;
+use App\Models\Cart;
+use App\Models\Menu;
+use App\Models\Order;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     protected $OrderService;
@@ -32,10 +35,42 @@ class OrderController extends Controller
         return new OrdersResource($order);
     }
 
-    public function store(OrdersRequest $request)
+    public function store(Request $request)
     {
-        $order = $this->OrderService->createOrder($request->validated());
-        return new OrdersResource($order);
+        $orderItemsIds = $request->order_items_id;
+      
+        DB::beginTransaction();
+        try {
+            $orders = new Order([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'delivery_address' => $request->input('delivery_address'),
+                'phone' => $request->input('phone'),
+                'total_amount' => $request->input('total_amount'),
+                'user_id' => $request->input('user_id'),
+            ]);
+    
+            $orders->save();
+            $order_id = $orders->id;
+    
+            foreach ($orderItemsIds as $orderItemsId) {
+                $orderItem = Cart::find($orderItemsId);
+                $orderItem->order_id = $order_id;
+                $orderItem->status = 'ordered';
+                $orderItem->save();
+            }
+
+            DB::commit();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['message' => $e->getMessage() ], 500);
+        }
+        
+    
+        return response()->json([
+            'message' => 'orders added successfully',
+        ], 201);
     }
 
     public function update(OrdersRequest $request, $id)

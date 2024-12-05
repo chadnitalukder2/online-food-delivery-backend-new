@@ -27,7 +27,7 @@ class RestaurantRequest extends FormRequest
             'owner_id' => 'sometimes|exists:users,id',
             'name' => 'sometimes|string|max:255',  // Optional for update
             'description' => 'nullable|string',
-            'email' => 'sometimes|email|unique:restaurants,email',
+            'email' => 'sometimes|email',
             'phone' => 'nullable|numeric',
             'address' => 'sometimes|string',
             'status' => 'nullable|string',

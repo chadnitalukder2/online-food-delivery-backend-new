@@ -5,6 +5,11 @@ namespace App\Services;
 use App\Models\Restaurant;
 class restaurantService
 {
+    public function getRestaurantByUserId($id)
+    {
+        return Restaurant::where('owner_id', $id)->get();
+    }
+
     public function getFilteredRestaurant(array $filters, $perPage = 10)
     {
         $query = Restaurant::query();

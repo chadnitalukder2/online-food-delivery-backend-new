@@ -17,6 +17,13 @@ class RestaurantController extends Controller
     {
         $this->restaurantService = new restaurantService();
     }
+    public function getRestaurantByOwner($id) {
+        if (!is_numeric($id)) {
+            return response()->json(['message' => 'Invalid user ID'], 400);
+        }
+        $restaurant = $this->restaurantService->getRestaurantByUserId($id);
+        return $restaurant;
+    }
 
     //get all
     public function index(Request $request)

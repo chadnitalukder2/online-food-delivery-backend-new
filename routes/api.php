@@ -37,6 +37,9 @@ Route::apiResource('orderTrackings', OrderTrackingController::class);
 Route::apiResource('carts', CartController::class);
 
 Route::apiResource('users', UserController::class);
+Route::get('getCarts/{id}', [CartController::class, 'getCarts']);
+Route::get('getRestaurantByOwner/{id}', [RestaurantController::class, 'getRestaurantByOwner']);
+Route::get('getCategoryByOwner/{id}', [CategoryController::class, 'getCategoryByOwner']);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);

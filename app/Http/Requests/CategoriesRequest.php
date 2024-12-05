@@ -23,6 +23,7 @@ class CategoriesRequest extends FormRequest
     {
         // Common rules for both store and update
         $rules = [
+            'user_id' => 'sometimes|exists:users,id',
             'restaurant_id' => 'sometimes|exists:restaurants,id',
             'name' => 'sometimes|string|max:255',  // Optional for update
             'image' =>  'nullable|mimes:jpeg,png,jpg,gif,webp|max:2048',

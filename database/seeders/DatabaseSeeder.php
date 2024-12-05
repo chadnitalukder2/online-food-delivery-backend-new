@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Restaurant::factory(10)->create();
-        Menu::factory(50)->create();
-        Category::factory(10)->create();
+        // Menu::factory(50)->create();
+        // Category::factory(10)->create();
 
         
       

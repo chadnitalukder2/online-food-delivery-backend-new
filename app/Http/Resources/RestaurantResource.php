@@ -20,7 +20,7 @@ class RestaurantResource extends JsonResource
             'owner_id' => $this->owner_id,
             'name' => $this->name,
             'phone' => $this->phone,
-            'email ' => $this->email,
+            'email' => $this->email,
             'address' => $this->address,
             'image' => $this->image,
             'bg_image' => $this->bg_image,

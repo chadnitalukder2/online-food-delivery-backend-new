@@ -7,6 +7,11 @@ use GuzzleHttp\Psr7\Request;
 
 class CategoriesService
 {
+    public function geCategoryByOwner($id)
+    {
+        return Category::where('user_id', $id)->get();
+    }
+
     public function getCategories()
     {
         $query = Category::query();

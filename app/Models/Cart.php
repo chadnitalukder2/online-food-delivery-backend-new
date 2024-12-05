@@ -15,4 +15,8 @@ class Cart extends Model
     {
         return $this->belongsTo(Menu::class);
     }
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 }
