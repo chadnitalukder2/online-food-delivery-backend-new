@@ -42,7 +42,8 @@ Route::get('getCarts/{id}', [CartController::class, 'getCarts']);
 Route::get('getRestaurantByOwner/{id}', [RestaurantController::class, 'getRestaurantByOwner']);
 Route::get('getCategoryByOwner/{id}', [CategoryController::class, 'getCategoryByOwner']);
 
-Route::get('/search', [SearchController::class, 'search']);
+Route::get('/searchRestaurant', [SearchController::class, 'searchRestaurant']);
+Route::get('/searchMenu', [SearchController::class, 'searchMenu']);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);
