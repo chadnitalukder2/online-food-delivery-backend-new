@@ -42,6 +42,8 @@ Route::get('getCarts/{id}', [CartController::class, 'getCarts']);
 Route::get('getRestaurantByOwner/{id}', [RestaurantController::class, 'getRestaurantByOwner']);
 Route::get('getCategoryByOwner/{id}', [CategoryController::class, 'getCategoryByOwner']);
 
+Route::get('getOrdersByUserId/{id}', [OrderController::class, 'getOrdersByUserId']);
+
 Route::get('/searchRestaurant', [SearchController::class, 'searchRestaurant']);
 Route::get('/searchMenu', [SearchController::class, 'searchMenu']);
 //================================================================

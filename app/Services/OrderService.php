@@ -6,6 +6,13 @@ use App\Models\Order;
 
 class OrderService
 {
+
+    public function geOrderByUser($id)
+    {
+        return Order::where('user_id', $id)->orderBy('id', 'desc')->get();
+    }
+
+
     // Get all orders with optional filtering and pagination
     public function getFilteredOrder(array $filters, $perPage = 10)
     {

@@ -19,6 +19,14 @@ class OrderController extends Controller
         $this->OrderService = new OrderService();
     }
 
+    public function getOrdersByUserId($id){
+        if (!is_numeric($id)) {
+            return response()->json(['message' => 'Invalid user ID'], 400);
+        }
+        $orders = $this->OrderService ->geOrderByUser($id);
+        return $orders;
+    }
+
     // Get all menus with optional filtering and pagination
     public function index(Request $request)
     {
@@ -85,25 +93,6 @@ class OrderController extends Controller
         return response()->json(null, 204);
     }
 
-    public function ordersByRestaurant(Request $request)
-    {
-        $validated = $request->validate([
-            'restaurant_ids' => 'required|array',
-            'restaurant_ids.*' => 'integer|exists:restaurants,id',
-        ]);
-
-        try {
-            $orders = Cart::whereIn('restaurant_id', $validated['restaurant_ids'])->get();
-
-            if ($orders->isEmpty()) {
-                return response()->json(['message' => 'No orders found for these restaurants.'], 404);
-            }
-
-            return response()->json($orders, 200);
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to fetch orders.', 'details' => $e->getMessage()], 500);
-        }
-    }
-
+   
 
 }
