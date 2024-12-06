@@ -14,6 +14,7 @@ use App\Http\Controllers\OrderTrackingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ Route::apiResource('users', UserController::class);
 Route::get('getCarts/{id}', [CartController::class, 'getCarts']);
 Route::get('getRestaurantByOwner/{id}', [RestaurantController::class, 'getRestaurantByOwner']);
 Route::get('getCategoryByOwner/{id}', [CategoryController::class, 'getCategoryByOwner']);
+
+Route::get('/search', [SearchController::class, 'search']);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);
