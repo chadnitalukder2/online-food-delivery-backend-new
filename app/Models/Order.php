@@ -15,8 +15,10 @@ class Order extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
-    public function menu()
+   
+
+    public function cartItem()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->hasMany(Cart::class);
     }
 }

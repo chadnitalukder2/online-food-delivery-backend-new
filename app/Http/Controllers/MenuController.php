@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Collections\MenusCollection;
 use App\Http\Requests\MenusRequest;
 use App\Http\Resources\MenusResource;
+use App\Models\Menu;
 use App\Services\MenusService;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,11 @@ class MenuController extends Controller
         return response()->json(null, 204);
     }
 
-
+    public function getMenuByRestaurantIds($id)
+    {
+        $menu = Menu::where('restaurant_id', $id)->get();
+        return response()->json($menu);
+    }
   
 
 

@@ -23,6 +23,7 @@ class OrdersRequest extends FormRequest
     {
  
         $rules = [
+            'restaurant_id' => 'sometimes|exists:restaurants,id',
             'user_id' => 'sometimes|exists:users,id',
             'total_amount' => 'sometimes|numeric|min:0',
             'status' => 'sometimes|string|in:pending,completed,canceled',
@@ -34,6 +35,7 @@ class OrdersRequest extends FormRequest
         ];
 
         if ($this->isMethod('POST')) {
+            $rules['restaurant_id'] = 'required|exists:restaurants,id';
             $rules['user_id'] = 'required|exists:users,id';
             $rules['total_amount'] = 'required|numeric|min:0';
             $rules['delivery_address'] = 'required|string|max:255';

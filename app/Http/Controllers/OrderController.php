@@ -49,6 +49,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $orders = new Order([
+                'restaurant_id' => $request->input('restaurant_id'),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'delivery_address' => $request->input('delivery_address'),
@@ -93,6 +94,10 @@ class OrderController extends Controller
         return response()->json(null, 204);
     }
 
-   
+    public function getOrdersByRestaurantIds($id)
+    {
+        $orders = Order::where('restaurant_id', $id)->get();
+        return response()->json($orders);
+    }
 
 }

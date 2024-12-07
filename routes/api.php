@@ -46,6 +46,9 @@ Route::get('getOrdersByUserId/{id}', [OrderController::class, 'getOrdersByUserId
 
 Route::get('/searchRestaurant', [SearchController::class, 'searchRestaurant']);
 Route::get('/searchMenu', [SearchController::class, 'searchMenu']);
+
+Route::get('/getMenuByRestaurantIds/{id}', [MenuController::class, 'getMenuByRestaurantIds']);
+Route::get('/getOrdersByRestaurantIds/{id}', [OrderController::class, 'getOrdersByRestaurantIds']);
 //================================================================
 Route::post('/register', [AuthRegisterController::class, 'register']);
 Route::post('/login', [AuthLoginController::class, 'login']);
