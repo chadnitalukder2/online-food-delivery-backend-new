@@ -52,6 +52,7 @@ class OrderController extends Controller
                 'restaurant_id' => $request->input('restaurant_id'),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
+                'payment_status' => $request->input('payment_status'),
                 'delivery_address' => $request->input('delivery_address'),
                 'phone' => $request->input('phone'),
                 'total_amount' => $request->input('total_amount'),
