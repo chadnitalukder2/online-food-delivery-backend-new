@@ -7,6 +7,7 @@ use App\Http\Requests\OrdersRequest;
 use App\Http\Resources\OrdersResource;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,8 @@ class OrderController extends Controller
                 'restaurant_id' => $request->input('restaurant_id'),
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
+                'status' => $request->input('status'),
+                'payment_status' => $request->input('payment_status'),
                 'delivery_address' => $request->input('delivery_address'),
                 'phone' => $request->input('phone'),
                 'total_amount' => $request->input('total_amount'),
@@ -67,6 +70,15 @@ class OrderController extends Controller
                 $orderItem->status = 'ordered';
                 $orderItem->save();
             }
+            $payment = new Payment([
+                'restaurant_id' => $request->input('restaurant_id'),
+                'order_id' => $order_id,
+                'status' => $request->input('status'),
+                'payment_method' => $request->input('payment_status'),
+                'amount' => $request->input('total_amount'),
+            ]);
+    
+            $payment->save();
 
             DB::commit();
 
