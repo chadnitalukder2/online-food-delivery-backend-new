@@ -9,7 +9,7 @@ class OrderService
 
     public function geOrderByUser($id)
     {
-        return Order::where('user_id', $id)->with('cartItem')->orderBy('id', 'desc')->get();
+        return Order::where('user_id', $id)->with('cartItem.menu')->orderBy('id', 'desc')->get();
     }
 
 

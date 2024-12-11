@@ -38,7 +38,7 @@ class MenuController extends Controller
         $menu = $this->menuService->createMenu($request->validated());
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('menus_img', 'public');
-            $imagePath = asset('storage/'.$imagePath);
+            $menu->update(['image' => asset('storage/' . $imagePath)]);
         }
         return new MenusResource($menu);
     }
@@ -64,7 +64,7 @@ class MenuController extends Controller
 
     public function getMenuByRestaurantIds($id)
     {
-        $menu = Menu::where('restaurant_id', $id)->get();
+        $menu = Menu::where('restaurant_id', $id)->orderBy('id', 'desc')->get();
         return response()->json($menu);
     }
   

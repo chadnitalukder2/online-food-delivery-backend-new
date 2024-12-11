@@ -3,13 +3,12 @@
 namespace App\Services;
 
 use App\Models\Category;
-use GuzzleHttp\Psr7\Request;
 
 class CategoriesService
 {
     public function geCategoryByOwner($id)
     {
-        return Category::where('user_id', $id)->get();
+        return Category::where('user_id', $id)->orderBy('id', 'desc')->get();
     }
 
     public function getCategories()
