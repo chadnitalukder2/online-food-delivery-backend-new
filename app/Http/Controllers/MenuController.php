@@ -64,7 +64,7 @@ class MenuController extends Controller
 
     public function getMenuByRestaurantIds($id)
     {
-        $menu = Menu::where('restaurant_id', $id)->get();
+        $menu = Menu::where('restaurant_id', $id)->orderBy('id', 'desc')->get();
         return response()->json($menu);
     }
   
