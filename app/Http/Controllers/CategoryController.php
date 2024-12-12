@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $categories = $this->CategoriesService->createCategory($request->validated());
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('category_img', 'public');
-            $imagePath = asset('storage/'.$imagePath);
+            $categories->update(['image' => asset('storage/' . $imagePath)]);
         }
         return new CategoriesResource($categories);
     }

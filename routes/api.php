@@ -56,3 +56,7 @@ Route::post('/login', [AuthLoginController::class, 'login']);
 
 Route::post('/logout', [AuthLoginController::class, 'logout']);
 
+
+
+Route::post('/payment', [PaymentController::class, 'processPayment']);
+

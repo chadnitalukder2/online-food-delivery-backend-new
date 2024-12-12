@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Category;
-use GuzzleHttp\Psr7\Request;
 
 class CategoriesService
 {

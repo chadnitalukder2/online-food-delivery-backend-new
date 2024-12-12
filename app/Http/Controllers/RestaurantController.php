@@ -46,11 +46,11 @@ class RestaurantController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images/restaurants', 'public');
-            $restaurant->update(['image' => $imagePath]);
+            $restaurant->update(['image' => asset('storage/' . $imagePath)]);
         }
         if ($request->hasFile('bg_image')) {
             $imagePath = $request->file('bg_image')->store('images/restaurants', 'public');
-            $restaurant->update(['bg_image' => $imagePath]);
+            $restaurant->update(['bg_image' => asset('storage/' . $imagePath)]);
         }
         return new RestaurantResource($restaurant);
     }
