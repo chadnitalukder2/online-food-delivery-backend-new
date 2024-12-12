@@ -7,6 +7,7 @@ use App\Services\restaurantService;
 use App\Collections\RestaurantCollection;
 use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantResource;
+use App\Models\User;
 
 class RestaurantController extends Controller
 {

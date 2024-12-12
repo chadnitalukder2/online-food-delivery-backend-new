@@ -33,6 +33,7 @@ class restaurantService
 
     public function createRestaurant(array $data){
         return Restaurant::create($data);
+        
 
     }
 

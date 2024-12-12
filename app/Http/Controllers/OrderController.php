@@ -110,7 +110,7 @@ class OrderController extends Controller
 
     public function getOrdersByRestaurantIds($id)
     {
-        $orders = Order::where('restaurant_id', $id)->orderBy('id', 'desc')->get();
+        $orders = Order::where('restaurant_id', $id)->with('cartItem.menu')->orderBy('id', 'desc')->get();
         return response()->json($orders);
     }
 
